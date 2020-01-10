@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Player from '../player/Player';
 
 const Header: React.FC = () => {
+    const setDataFromPlayer = React.useCallback((e)=> {
+        console.log(e);
+    }, [])
+
     return (
         <header>
             <div className="container">
@@ -14,6 +19,7 @@ const Header: React.FC = () => {
                         <Link to="/about">About</Link>
                     </nav>
                 </div>
+                <Player src="https://vk.com/doc2351807_488765951" setDataFromPlayer={setDataFromPlayer} />
             </div>
         </header>
     )

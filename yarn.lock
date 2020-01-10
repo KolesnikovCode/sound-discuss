@@ -918,6 +918,18 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@iconify/icons-mdi@^1.0.42":
+  version "1.0.45"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-mdi/-/icons-mdi-1.0.45.tgz#ea5d0c6ef05960a65a2ac4d25a043217661dbc1e"
+  integrity sha512-ZU8kmBiHWTD8DN/cpsmbymSN88OgWako3yfojUCsHH8BKeJRe3wLD5CEBddITvBur98NxnRLytw0uuWZnpF0OQ==
+
+"@iconify/react@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-1.1.1.tgz#38526508f722e0b617723d79209bb1e6d8c59c61"
+  integrity sha512-BRbPW/vkyWi6n2dHx4O8Cp0RKeI4KsxieLZ+UcyknCkk1IVxii5IassCIKHJ3jWB6s6uLAWq5EnHJniI7er9+w==
+  dependencies:
+    react "^16.8.3"
+
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.9.0.tgz#79b1bc06fb74a8cfb01cbdedf945584b1b9707f0"
@@ -8715,6 +8727,14 @@ react-error-overlay@^6.0.4:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.4.tgz#0d165d6d27488e660bc08e57bdabaad741366f7a"
   integrity sha512-ueZzLmHltszTshDMwyfELDq8zOA803wQ1ZuzCccXa1m57k1PxSHfflPD5W9YIiTXLs0JTLzoj6o1LuM5N6zzNA==
 
+react-h5-audio-player@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-h5-audio-player/-/react-h5-audio-player-2.2.0.tgz#72f4ed3f53b84050e1daeedf69c28333e00eb1fb"
+  integrity sha512-F2dUYi/ucsLNssM4yhvnaejAlKhu/HJ1l3VeXRxmukGTFPoKVVDfHHXlgHSfycduJtF0CrYY3TMqzNOcs+6SRQ==
+  dependencies:
+    "@iconify/icons-mdi" "^1.0.42"
+    "@iconify/react" "^1.1.1"
+
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
@@ -8809,7 +8829,7 @@ react-scripts@3.3.0:
   optionalDependencies:
     fsevents "2.1.2"
 
-react@^16.12.0:
+react@^16.12.0, react@^16.8.3:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
   integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
