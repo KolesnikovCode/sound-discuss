@@ -1,3 +1,6 @@
+// variables
+$white: #fff5ee;
+
 .container {
     max-width: 1280px;
     margin: 0 auto;
@@ -5,7 +8,7 @@
 }
 
 header {
-    background: linear-gradient(#333, #292929);
+    background: linear-gradient(#333, #1b1b1b);
     text-decoration: none;
     .header {
         display: flex;
@@ -15,10 +18,17 @@ header {
             text-transform: uppercase;
         }
         a {
-            color: #fff;
+            color: $white;
             text-decoration: none;
             font-weight: bold;
             outline: none;
+            transition: opacity .2s ease;
+            &:hover {
+                opacity: .8;
+            }
+            &:active {
+                opacity: .6;
+            }
         }
         nav {
             a:not(:first-child) {
