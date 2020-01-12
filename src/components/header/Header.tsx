@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Player from '../player/Player';
+import { connect } from 'react-redux';
 
-const Header: React.FC = () => {
+const Header: React.FC = (props: any) => {
     const setDataFromPlayer = React.useCallback((e)=> {
         console.log(e);
     }, [])
@@ -19,10 +20,10 @@ const Header: React.FC = () => {
                         <Link to="/about">About</Link>
                     </nav>
                 </div>
-                <Player src="https://vk.com/doc2351807_488765951" setDataFromPlayer={setDataFromPlayer} />
+                <Player src={props.audioSrc} setDataFromPlayer={setDataFromPlayer} />
             </div>
         </header>
     )
 }
 
-export default Header;
+export default connect(state => state)(Header);
