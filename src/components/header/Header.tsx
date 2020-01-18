@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Player from '../player/Player';
 import { connect } from 'react-redux';
 
-const Header: React.FC = (props: any) => {
+const Header: React.FC = ({ audioSrc }: any) => {
     const setDataFromPlayer = React.useCallback((e)=> {
         console.log(e);
     }, [])
@@ -20,7 +20,7 @@ const Header: React.FC = (props: any) => {
                         <Link to="/about">About</Link>
                     </nav>
                 </div>
-                <Player src={props.audioSrc} setDataFromPlayer={setDataFromPlayer} />
+                <Player src={audioSrc} setDataFromPlayer={setDataFromPlayer} />
             </div>
         </header>
     )
