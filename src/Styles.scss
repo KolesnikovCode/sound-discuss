@@ -1,6 +1,25 @@
 // variables
 $white: #fff5ee;
 
+// player
+.rhap_container {
+    outline: none;
+    .rhap_controls-section {
+        justify-content: center;
+        .rhap_additional-controls {
+            display: none;
+        }
+        .rhap_main-controls {
+            .rhap_play-pause-button {
+                outline: none;
+            }
+            .rhap_rewind-button, .rhap_forward-button {
+                display: none;
+            }
+        }
+    }
+}
+
 .container {
     max-width: 1280px;
     margin: 0 auto;

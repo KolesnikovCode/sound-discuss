@@ -9,8 +9,8 @@ const HomePage: React.FC = () => {
                 <h3>My projects</h3>
                 <div className="my-projects_wrapper">
                     {
-                        [1,0,11,'youtube'].map((el) => (
-                            <div className="my-projects_project">
+                        [1,0,11,'youtube'].map((el, i) => (
+                            <div className="my-projects_project" key={i}>
                                 <Link to="/project/project-id">{`Project ${el}`}</Link>
                             </div>
                         ))

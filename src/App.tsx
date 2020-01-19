@@ -7,9 +7,12 @@ import './Styles.scss';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducer from './store/reducer';
+import * as firebase from "firebase/app";
+import firebaseConfig from './api/firebaseConfig';
 
 const store = createStore(reducer);
 
+firebase.initializeApp(firebaseConfig);
 
 const App: React.FC = () => {
   return (
