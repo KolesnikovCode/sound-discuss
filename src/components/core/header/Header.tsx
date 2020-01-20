@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Player from '../player/Player';
+import Player from '../../core/player/Player';
 import { connect } from 'react-redux';
 
 const Header: React.FC = ({ audioSrc }: any) => {
