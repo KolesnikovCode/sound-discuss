@@ -50,8 +50,30 @@ header {
             }
         }
         nav {
-            a:not(:first-child) {
-                margin-left: 20px;
+            a {
+                position: relative;
+                &:not(:first-child) {
+                    margin-left: 20px;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    transition: all .2s ease;
+                    height: 2px;
+                    left: 0;
+                    bottom: -5px;
+                    background: $white;
+                }
+            }
+            .is-active-link {
+                pointer-events: none;
+                opacity: .8;
+                transition: all .2s ease;
+                &::after {
+                    opacity: .8;
+                    width: 100%;
+                }
             }
         }
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Player from '../../core/player/Player';
 import { connect } from 'react-redux';
 
@@ -13,11 +13,11 @@ const Header: React.FC = ({ audioSrc }: any) => {
             <div className="container">
                 <div className="header">
                     <div className="header-logo">
-                        <Link to="/">Sound Discus</Link>
+                        <NavLink to="/">Sound Discus</NavLink>
                     </div>
                     <nav>
-                        <Link to="/">Main</Link>
-                        <Link to="/about">About</Link>
+                        <NavLink exact={true} activeClassName="is-active-link" to="/">Main</NavLink>
+                        <NavLink exact={true} activeClassName="is-active-link" to="/about">About</NavLink>
                     </nav>
                 </div>
                 <Player src={audioSrc} setDataFromPlayer={setDataFromPlayer} />

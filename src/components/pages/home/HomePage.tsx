@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
         if (isMounted) {
             setTimeout(() => {
                 setIsLoaded(true);
-            }, 1500)
+            }, 700)
         }
     }, []);
 
@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
                                 {
                                     [1,0,11,'youtube'].map((el, i) => (
                                         <div className="my-projects_project" key={i}>
-                                            <Link to="/project/project-id">{`Project ${el}`}</Link>
+                                            <Link to={`/project/${i+1}`}>{`Project ${el}`}</Link>
                                         </div>
                                     ))
                                 }
