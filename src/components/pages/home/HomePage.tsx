@@ -34,9 +34,15 @@ const HomePage: React.FC = () => {
                                 {
                                     [1,0,11,'youtube'].map((el, i) => (
                                         <div className="my-projects_project" key={i}>
-                                            <Link to={`/project/${i+1}`}>{`Project ${el}`}</Link>
+                                            <Link to={`/project/${i+1}`}>{`Go to project "${el}"`}</Link>
                                         </div>
                                     ))
+                                }
+                                {
+                                    <Link to="/new-project" className="my-projects_project new-project">
+                                        Create new project<br />
+                                        +
+                                    </Link>
                                 }
                             </div>
                         </div>
