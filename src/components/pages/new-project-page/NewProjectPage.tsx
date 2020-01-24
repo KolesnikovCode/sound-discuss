@@ -1,6 +1,7 @@
 import React from 'react';
 import Loader from '../../../components/core/loader/Loader';
 import { IAudioFile } from '../../../models/audioFile';
+import Form from './Form';
 
 const HomePage: React.FC = () => {
     // mounted compoent flag
@@ -26,7 +27,9 @@ const HomePage: React.FC = () => {
             setAudioFile(fileInput.current.files[0]);
             console.log(fileInput.current.files[0]);
         } else {
-            alert("Wrong file type!")
+            fileInput.current.value = '';
+            setAudioFile(null);
+            alert("Wrong file type!");
         }
     }, []);
 
@@ -52,11 +55,12 @@ const HomePage: React.FC = () => {
                                 !!audioFile && <div>{ audioFile.name }</div>
                             }
                         </div>
+                        <Form />
                     </>
                 ) : <Loader />
             }
         </div>
     )
-}
+};
 
 export default HomePage;

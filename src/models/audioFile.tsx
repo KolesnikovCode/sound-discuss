@@ -1,5 +1,5 @@
 export interface IAudioFile {
-    name: string,
-    size: number,
-    type: string
+    name: string;
+    size: number;
+    type: string;
 }
