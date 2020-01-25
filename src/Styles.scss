@@ -1,6 +1,8 @@
 // variables
 $white: #fff5ee;
 $blue: #0d307a;
+$gray: #cfcfcf;
+$orange: #FF5F00;
 
 // player
 .rhap_container {
@@ -139,9 +141,17 @@ header {
 }
 
 .uploadAudio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    position: relative;
     label {
-        width: 220px;
+        max-width: 220px;
         height: 42px;
+        padding: 0 30px;
         box-sizing: border-box;
         border-radius: 1em;
         display: block;
@@ -161,5 +171,50 @@ header {
     }
     input {
         display: none;
+    }
+    &-filename {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 5px;
+        text-align: center;
+        word-wrap: none;
+        text-overflow: ellipsis;
+    }
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+    input {
+        width: 100%;
+        height: 40px;
+        margin-bottom: 20px;
+        border-radius: .3em;
+        border: 1px solid $gray;
+        padding: 0 10px;
+        outline: none;
+    }
+    button {
+        max-width: 110px;
+        height: 32px;
+        border-radius: .3em;
+        background: $orange;
+        color: $white;
+        outline: none;
+        transition: all .2s ease;
+        padding: 0 20px;
+        &:hover {
+            opacity: .9;
+        }
+        &:active {
+            opacity: .9;
+        }
+        &:disabled {
+            opacity: .5;
+        }
     }
 }

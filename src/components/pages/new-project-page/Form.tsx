@@ -18,7 +18,7 @@ const Form: React.FC = () => {
     });
 
     return (
-        <form onSubmit={ formik.handleSubmit }>
+        <form onSubmit={ formik.handleSubmit } className="upload-form">
             <input
                 placeholder="Project name"
                 name="name"
@@ -33,7 +33,7 @@ const Form: React.FC = () => {
                 onChange={ formik.handleChange }
                 value={ formik.values.description }
             />
-            <button type="submit">Send</button>
+            <button type="submit" disabled>Send</button>
         </form>
     )
 };
