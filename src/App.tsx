@@ -5,7 +5,7 @@ import HomePage from './components/pages/home/HomePage';
 import AboutPage from './components/pages/about/AboutPage';
 import ProjectPage from './components/pages/project/ProjectPage';
 import NewProjectPage from './components/pages/new-project-page/NewProjectPage';
-import './Styles.scss';
+import './styles-scss/Styles.scss';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducer from './store/reducer';

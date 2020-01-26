@@ -3,10 +3,17 @@ import { NavLink } from 'react-router-dom';
 import Player from '../../core/player/Player';
 import { connect } from 'react-redux';
 
+const mapStateToProps = (state: any) => {
+    const { audioSrc } = state;
+    return {
+        audioSrc
+    }
+}
+
 const Header: React.FC = ({ audioSrc }: any) => {
     const setDataFromPlayer = React.useCallback((e)=> {
         console.log(e);
-    }, [])
+    }, []);
 
     return (
         <header>
@@ -16,14 +23,14 @@ const Header: React.FC = ({ audioSrc }: any) => {
                         <NavLink to="/">Sound Discus</NavLink>
                     </div>
                     <nav>
-                        <NavLink exact={true} activeClassName="is-active-link" to="/">Main</NavLink>
-                        <NavLink exact={true} activeClassName="is-active-link" to="/about">About</NavLink>
+                        <NavLink exact={ true } activeClassName="is-active-link" to="/">Main</NavLink>
+                        <NavLink exact={ true } activeClassName="is-active-link" to="/about">About</NavLink>
                     </nav>
                 </div>
-                <Player src={audioSrc} setDataFromPlayer={setDataFromPlayer} />
+                <Player src={ audioSrc } setDataFromPlayer={ setDataFromPlayer } />
             </div>
         </header>
     )
 }
 
-export default connect(state => state)(Header);
+export default connect(mapStateToProps)(Header);
