@@ -6,6 +6,8 @@
 .pnp.js
 .vscode
 /src/api/apiKey.js
+/backend/node_modules
+/backend/config
 
 # testing
 /coverage

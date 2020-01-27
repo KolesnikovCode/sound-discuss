@@ -1,0 +1,20 @@
+{
+  "name": "sound-discuss-backend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Yuri Kolesnikov <kolesnikov_official@mail.ru>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "dependencies": {
+    "config": "^3.2.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.10"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2"
+  }
+}
