@@ -7,8 +7,8 @@ const mapStateToProps = (state: any) => {
     const { audioSrc } = state;
     return {
         audioSrc
-    }
-}
+    };
+};
 
 const Header: React.FC = ({ audioSrc }: any) => {
     const setDataFromPlayer = React.useCallback((e)=> {
@@ -23,7 +23,7 @@ const Header: React.FC = ({ audioSrc }: any) => {
                         <NavLink to="/">Sound Discus</NavLink>
                     </div>
                     <nav>
-                        <NavLink exact={ true } activeClassName="is-active-link" to="/">Main</NavLink>
+                        <NavLink exact={ true } activeClassName="is-active-link" to="/">Dashboard</NavLink>
                         <NavLink exact={ true } activeClassName="is-active-link" to="/about">About</NavLink>
                     </nav>
                 </div>
@@ -31,6 +31,6 @@ const Header: React.FC = ({ audioSrc }: any) => {
             </div>
         </header>
     )
-}
+};
 
 export default connect(mapStateToProps)(Header);

@@ -7,7 +7,7 @@
 .vscode
 /src/api/apiKey.js
 /backend/node_modules
-/backend/config
+/backend/config/default.json
 
 # testing
 /coverage

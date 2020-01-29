@@ -1,13 +1,13 @@
 import { SET_SRC_TO_PLAYER } from './actions';
 
 const initialState = {
-    audioSrc: 'https://vk.com/doc2351807_488765951'
-}
+    audioSrc: ''
+};
 
 interface IAction {
     type: string;
     payload?: any
-}
+};
 
 export default function reducer(state = initialState, action: IAction) {
     switch (action.type) {

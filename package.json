@@ -12,6 +12,8 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.5",
     "@types/react-router-dom": "^5.1.3",
+    "@types/yup": "^0.26.29",
+    "file-loader": "^5.0.2",
     "firebase": "^7.7.0",
     "formik": "^2.1.2",
     "node-sass": "^4.13.0",
@@ -25,7 +27,8 @@
     "react-scripts": "3.3.0",
     "redux": "^4.0.5",
     "sass-loader": "^8.0.0",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "yup": "^0.28.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -50,5 +53,6 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "author": "Yuri Kolesnikov <kolesnikov_official@mail.ru>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {}
 }
