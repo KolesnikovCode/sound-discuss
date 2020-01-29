@@ -1,0 +1,87 @@
+// variables
+$white: #fff5ee;
+$blue: #0d307a;
+$gray: #cfcfcf;
+$red: #cc1010;
+$orange: #FF5F00;
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+// header
+header {
+    background: linear-gradient(#333, #1b1b1b);
+    text-decoration: none;
+    .header {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0;
+        &-logo {
+            text-transform: uppercase;
+        }
+        a {
+            color: $white;
+            text-decoration: none;
+            font-weight: bold;
+            outline: none;
+            transition: opacity .2s ease;
+            &:hover {
+                opacity: .8;
+            }
+            &:active {
+                opacity: .6;
+            }
+        }
+        nav {
+            a {
+                font-family: 'Roboto', sans-serif;
+                position: relative;
+                &:not(:first-child) {
+                    margin-left: 20px;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    transition: all .2s ease;
+                    height: 2px;
+                    left: 0;
+                    bottom: -5px;
+                    background: $white;
+                }
+            }
+            .is-active-link {
+                pointer-events: none;
+                opacity: .8;
+                transition: all .2s ease;
+                &::after {
+                    opacity: .8;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+// player
+.rhap_container {
+    background: #fff;
+    outline: none;
+    .rhap_controls-section {
+        justify-content: center;
+        .rhap_additional-controls {
+            display: none;
+        }
+        .rhap_main-controls {
+            .rhap_play-pause-button {
+                outline: none;
+            }
+        }
+    }
+}
