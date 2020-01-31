@@ -1,10 +1,12 @@
 const { Router } = require('express');
 const bcrypt = require('bcryptjs');
+const config = require('config');
+const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator');
 const User = require('../models/User');
 const router = Router();
 
-// /api/auth
+// /api/auth/registration
 router.post('/registration',
     [
         check('email', 'invalid email').isEmail(),
@@ -25,7 +27,7 @@ router.post('/registration',
         const candidate = await User.findOne({ email });
 
         if (candidate) {
-            return res.status(400).json({ message: 'User with this email is already registered' });
+            return res.status(400).json({ message: 'User with this email is already registered' })
         }
 
         const hashedPassword = await bcrypt.hash(password, 12);
@@ -37,15 +39,55 @@ router.post('/registration',
         res.status(201).json({ message: 'User has been successfully registered' });
 
     } catch (e) {
-        res.status(500).json({ message: 'This f*cking backend is doesnt not working' });
+        res.status(500).json({ message: 'This f*cking backend is doesnt not working...' });
     }
 });
 
-router.post('/login', async (req, res) => {
+// /api/auth/login
+router.post('/login',
+    [
+        check('email', 'Email is Incorrect').normalizeEmail().isEmail(),
+        check('password', 'Enter password').exists()
+    ],
+    async (req, res) => {
     try {
-        throw new Error('Errorrr')
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                errors: errors.array(),
+                message: 'Login impossible. Incorrect data.'
+            })
+        }
+
+        const { email, password } = req.body;
+
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({
+                message: 'User with this email address not found.'
+            })
+        }
+
+        const isMatch = bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.status(400).json({
+                message: 'Incorrect password.'
+            })
+        }
+
+        const token = jwt.sign(
+            { userId: user.id },
+            config.get('jwtSecret'),
+            { expiresIn: '1h' }
+        );
+
+        res.json({ token, userId: user.id });
+
     } catch (e) {
-        
+        res.status(500).json({ message: 'This f*cking backend is doesnt not working...' })
     }
 });
 
