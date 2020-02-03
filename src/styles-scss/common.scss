@@ -73,6 +73,11 @@ header {
 .rhap_container {
     background: #fff;
     outline: none;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    height: 0px;
+    padding: 0;
     .rhap_controls-section {
         justify-content: center;
         .rhap_additional-controls {
@@ -84,4 +89,12 @@ header {
             }
         }
     }
+}
+
+.canPlay {
+    opacity: 1;
+    visibility: visible;
+    height: 88px;
+    transition: all .8s ease;
+    padding: 10px 15px;
 }

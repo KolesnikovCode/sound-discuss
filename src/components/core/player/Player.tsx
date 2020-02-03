@@ -18,7 +18,16 @@ interface IPlayer {
  */
 
 const Player = ({ autoPlay = false, src = '', setDataFromPlayer }: IPlayer) => {
-    return <AudioPlayer showJumpControls={ false } autoPlay={ autoPlay } showLoopControl={ false } src={ src } onCanPlay={ (event: Event) => setDataFromPlayer(event) } />
+    return (
+        <AudioPlayer
+            showJumpControls={ false }
+            autoPlay={ autoPlay }
+            showLoopControl={ false }
+            src={ src }
+            onCanPlay={ (event: Event) => setDataFromPlayer(event) }
+            className={ src ? 'canPlay' : '' }
+        />
+    )
 }
 
 export default Player;

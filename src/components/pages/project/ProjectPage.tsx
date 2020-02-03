@@ -8,18 +8,33 @@ const HomePage: React.FC = () => {
     // loading state
     const [isLoaded, setIsLoaded] = React.useState(false);
     // Project data
-    const [projectData, setProjectData] = React.useState({});
+    const [projectData, setProjectData] = React.useState([]);
     // Router Params
     const { projectId } = routerUseParams();
 
-    const fakeFetch = React.useCallback(() => {
-        if (isMounted) {
+    const fakePromise: any = () => {
+        return new Promise((resolve) => {
             setTimeout(() => {
-                setIsLoaded(true);
-                setProjectData({
-                    id: 1
+                resolve(() => {
+                    return [
+                        {
+                            id: 1,
+                            src: 'https://vk.com/doc2351807_486333299',
+                            name: 'MinimalHouse',
+                            descriprion: 'Just a test project',
+                            comments: []
+                        }
+                    ]
                 });
-            }, 500)
+            }, 1000);
+        });
+    };
+
+    const fakeFetch = React.useCallback( async () => {
+        if (isMounted) {
+            const data = await fakePromise();
+            setIsLoaded(true);
+            setProjectData(data);
         }
     }, []);
 
@@ -35,6 +50,12 @@ const HomePage: React.FC = () => {
             {isLoaded && !!projectData ? (
                     <>
                         <h1>Project id: { projectId }</h1>
+                        {projectData.map((version: any) => (
+                            <div key={ version.id }>
+                                <div>{ version.name }</div>
+                                <div>{ version.descriprion }</div>
+                            </div>
+                        ))}
                     </>
                 ) : <Loader />
             }
