@@ -1,0 +1,54 @@
+.project-nav-wrapper {
+    display: flex;
+    margin: -10px;
+    flex-wrap: wrap;
+    .project {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 250px;
+        height: 80px;
+        padding: 8px 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border: 1px solid $blue;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 10px;
+        transition: all .2s ease;
+        user-select: none;
+        &-name {
+            font-weight: 500;
+        }
+        &-active {
+            transition: all .2s ease;
+            background: rgb(34, 80, 209);
+            color: $white;
+            cursor: default;
+            pointer-events: none;
+            position: relative;
+            &::after {
+                position: absolute;
+                content: '';
+                width: 20px;
+                height: 100px;
+                background: #ffffff3d;
+                transform: rotate(-20deg);
+                left: -35px;
+                top: -15px;
+                filter: blur(10px);
+                animation: animate-blink infinite 2s linear;
+            }
+        }
+    }
+}
+
+@keyframes animate-blink {
+    0% {
+        left: -35px;
+    }
+    100% {
+        left: 250px;
+    }
+}

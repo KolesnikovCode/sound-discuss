@@ -1,8 +1,12 @@
 import React from 'react';
 import { useParams as routerUseParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setNewSrcToPlayerAction } from '../../../store/actions';
 import Loader from '../../../components/core/loader/Loader';
 
 const HomePage: React.FC = () => {
+    // dispatch
+    const dispatch = useDispatch();
     // mounted compoent flag
     const isMounted = React.useRef(true);
     // loading state
@@ -11,6 +15,17 @@ const HomePage: React.FC = () => {
     const [projectData, setProjectData] = React.useState([]);
     // Router Params
     const { projectId } = routerUseParams();
+    // activate version
+    const setActiveVersion = React.useCallback((i) => {
+        const newProjectData: any = [...projectData];
+        newProjectData.forEach((v: any) => {
+            v.isActive = false;
+        });
+        newProjectData[i].isActive = true;
+        setProjectData(newProjectData);
+        dispatch(setNewSrcToPlayerAction(''));
+        dispatch(setNewSrcToPlayerAction(newProjectData[i].src));
+    }, [projectData, setProjectData]);
 
     const fakePromise: any = () => {
         return new Promise((resolve) => {
@@ -19,11 +34,28 @@ const HomePage: React.FC = () => {
                     return [
                         {
                             id: 1,
+                            isActive: false,
                             src: 'https://vk.com/doc2351807_486333299',
                             name: 'MinimalHouse',
-                            descriprion: 'Just a test project',
+                            descriprion: 'Version 1',
                             comments: []
-                        }
+                        },
+                        {
+                            id: 2,
+                            isActive: false,
+                            src: 'https://vk.com/doc2351807_493497539',
+                            name: 'NEONDUCK - Tropical Paradise',
+                            descriprion: 'Version 2',
+                            comments: []
+                        },
+                        {
+                            id: 3,
+                            isActive: false,
+                            src: 'https://vk.com/doc2351807_493881564',
+                            name: 'Lady Gaga - Cover',
+                            descriprion: 'Version 3 Final',
+                            comments: []
+                        },
                     ]
                 });
             }, 1000);
@@ -49,13 +81,19 @@ const HomePage: React.FC = () => {
         <div className="container">
             {isLoaded && !!projectData ? (
                     <>
-                        <h1>Project id: { projectId }</h1>
-                        {projectData.map((version: any) => (
-                            <div key={ version.id }>
-                                <div>{ version.name }</div>
-                                <div>{ version.descriprion }</div>
-                            </div>
-                        ))}
+                        <h1>Version's</h1>
+                        <div className="project-nav-wrapper">
+                            {projectData.map((version: any, index: number) => (
+                                <div
+                                    key={ version.id }
+                                    className={`project ${version.isActive ? 'project-active' : ''}`}
+                                    onClick={() => setActiveVersion(index)}
+                                    >
+                                    <div className="project-name">{ version.name }</div>
+                                    <div className="project-descriprion">{ version.descriprion }</div>
+                                </div>
+                            ))}
+                        </div>
                     </>
                 ) : <Loader />
             }
