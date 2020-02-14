@@ -1,8 +1,9 @@
 import React from 'react';
-import { useParams as routerUseParams } from 'react-router-dom';
+// import { useParams as routerUseParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setNewSrcToPlayerAction } from '../../../store/actions';
 import Loader from '../../../components/core/loader/Loader';
+import moment from 'moment';
 
 const HomePage: React.FC = () => {
     // dispatch
@@ -14,7 +15,7 @@ const HomePage: React.FC = () => {
     // Project data
     const [projectData, setProjectData] = React.useState([]);
     // Router Params
-    const { projectId } = routerUseParams();
+    // const { projectId } = routerUseParams();
     // activate version
     const setActiveVersion = React.useCallback((i) => {
         const newProjectData: any = [...projectData];
@@ -25,7 +26,12 @@ const HomePage: React.FC = () => {
         setProjectData(newProjectData);
         dispatch(setNewSrcToPlayerAction(''));
         dispatch(setNewSrcToPlayerAction(newProjectData[i].src));
-    }, [projectData, setProjectData]);
+    }, [projectData, setProjectData, dispatch]);
+
+    const activeVersion: any = React.useMemo(() => {
+        const activeVer = projectData.find((ver: any) => ver.isActive);
+        return activeVer ? activeVer : null;
+    }, [projectData]);
 
     const fakePromise: any = () => {
         return new Promise((resolve) => {
@@ -38,7 +44,17 @@ const HomePage: React.FC = () => {
                             src: 'https://vk.com/doc2351807_486333299',
                             name: 'MinimalHouse',
                             descriprion: 'Version 1',
-                            comments: []
+                            comments: [
+                                {
+                                    id: 1,
+                                    user: {
+                                        id: 151,
+                                        fullname: 'Ivan Dorn'
+                                    },
+                                    date: moment(Date.now()).format('MMMM Do YYYY, h:mm'),
+                                    text: 'Wow, it\'s amazing'
+                                }
+                            ]
                         },
                         {
                             id: 2,
@@ -94,6 +110,24 @@ const HomePage: React.FC = () => {
                                 </div>
                             ))}
                         </div>
+                        {
+                            !!activeVersion && (
+                                <div className="project-comments-wrapper">
+                                    <h2>Comments</h2>
+                                    {
+                                        activeVersion.comments.length ? (
+                                            activeVersion.comments.map((comment: any) => (
+                                                <div className="project-comments-comment">
+                                                    <h5>{ comment.user.fullname }</h5>
+                                                    <sup>{ comment.date }</sup>
+                                                    <p>{ comment.text }</p>
+                                                </div>
+                                            ))
+                                        ) : <p>No comments</p>
+                                    }
+                                </div>
+                            )
+                        }
                     </>
                 ) : <Loader />
             }

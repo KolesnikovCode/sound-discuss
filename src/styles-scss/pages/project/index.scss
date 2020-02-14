@@ -52,3 +52,14 @@
         left: 250px;
     }
 }
+
+.project-comments {
+    &-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    &-comment {
+        border-top: 1px solid $gray;
+    }
+}
