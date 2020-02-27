@@ -8,7 +8,7 @@
 /src/api/apiKey.js
 /backend/node_modules
 /backend/config/default.json
-.idea/
+#.idea/
 
 # testing
 /coverage
