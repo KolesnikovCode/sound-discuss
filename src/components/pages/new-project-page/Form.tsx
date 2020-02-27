@@ -5,6 +5,7 @@ import { IAudioFile } from '../../../models/audioFile';
 import { useDispatch } from 'react-redux';
 import { setNewSrcToPlayerAction } from '../../../store/actions';
 import checkIcon from '../../../assets/icons/check-icon.svg';
+import * as firebase from "firebase";
 
 
 const Form: React.FC = () => {
@@ -61,6 +62,9 @@ const Form: React.FC = () => {
 
         if (uploadedFile.type.indexOf("audio/") !== -1) {
             setAudioFile(uploadedFile);
+            firebase.storage().ref().child(`audio/${uploadedFile.name}`).put(uploadedFile).then(res => {
+                console.log(res);
+            });
             formik.setFieldValue('file', uploadedFile);
             // Check change audioSrc
             dispatch(setNewSrcToPlayerAction(''));

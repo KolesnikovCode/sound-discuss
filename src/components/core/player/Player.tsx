@@ -28,6 +28,6 @@ const Player = ({ autoPlay = false, src = '', setDataFromPlayer }: IPlayer) => {
             className={ src ? 'canPlay' : '' }
         />
     )
-}
+};
 
 export default Player;
